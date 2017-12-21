@@ -1,6 +1,6 @@
 module ElchemyPoker.Models.Deck exposing (..)
 import ElchemyPoker.Models.Card as Card
-import Random.List
+import ElchemyPoker.Utils as Utils
 
 {-
   TODO
@@ -17,4 +17,4 @@ new =
       Card.values
       |> List.map (\value -> Card.Card suit value))
   |> List.concat
-  {-|> Random.List.shuffle-}
+  |> Utils.shuffle

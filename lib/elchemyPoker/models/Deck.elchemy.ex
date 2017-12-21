@@ -5,6 +5,7 @@ defmodule ElchemyPoker.Models.Deck do
 
   
   alias ElchemyPoker.Models.Card, as: Card
+  alias ElchemyPoker.Utils, as: Utils
 
   #   TODO
   #   import ElchemyPoker.Models.Card as Card exposing (Card)
@@ -17,7 +18,8 @@ defmodule ElchemyPoker.Models.Deck do
     (Card.suits
     |> (Elchemy.XList.map().(fn suit -> (Card.values
     |> (Elchemy.XList.map().(fn value -> {:card, suit, value} end)).()) end)).()
-    |> (Elchemy.XList.concat).())
+    |> (Elchemy.XList.concat).()
+    |> (Utils.shuffle).())
   end
 
 end
