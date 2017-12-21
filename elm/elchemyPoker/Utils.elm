@@ -12,32 +12,32 @@ Limitations: k >= 0, (List.length set) >= k
 -}
 getVariations : Int -> List a -> Result String (List (List a))
 getVariations k set =
-    if k < 0 then
-        Err <| "getVariations limitation: k >= 0, your k = " ++ toString k
-    else if List.length set < k then
-        Err <|
-            "getVariations limitation: (List.length set) >= k, your set = "
-                ++ toString set
-                ++ " and your k = "
-                ++ toString k
-    else
-        Ok (getVariations_ k set)
+  if k < 0 then
+    Err <| "getVariations limitation: k >= 0, your k = " ++ toString k
+  else if List.length set < k then
+    Err <|
+      "getVariations limitation: (List.length set) >= k, your set = "
+        ++ toString set
+        ++ " and your k = "
+        ++ toString k
+  else
+    Ok (getVariations_ k set)
 
 
 getVariations_ : Int -> List a -> List (List a)
 getVariations_ k set =
-    let
-        doGetVariations k set depth resultItem =
-            if depth < k then
-                set
-                    |> List.concatMap
-                        (\setItem ->
-                            if List.member setItem resultItem then
-                                []
-                            else
-                                doGetVariations k set (depth + 1) (setItem :: resultItem)
-                        )
-            else
-                [ resultItem |> List.reverse ]
-    in
-    doGetVariations k set 0 []
+  let
+    doGetVariations k set depth resultItem =
+      if depth < k then
+        set
+          |> List.concatMap
+            (\setItem ->
+              if List.member setItem resultItem then
+                []
+              else
+                doGetVariations k set (depth + 1) (setItem :: resultItem)
+            )
+      else
+        [ resultItem |> List.reverse ]
+  in
+  doGetVariations k set 0 []

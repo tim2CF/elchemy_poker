@@ -31,8 +31,8 @@ defmodule ElchemyPoker.Utils do
   end
 
   @spec get_variations_(integer, list(any)) :: list(list(any))
-  curry get_variations_/2
-  def get_variations_(k, set) do
+  curryp get_variations_/2
+  defp get_variations_(k, set) do
     do_get_variations = rec do_get_variations, fn k -> fn set -> fn depth -> fn result_item -> if (depth < k) do (set
     |> (Elchemy.XList.concat_map().(fn set_item -> if Elchemy.XList.member(set_item, result_item) do [] else do_get_variations.(k).(set).((depth + 1)).([set_item | result_item]) end end)).()) else [(result_item
     |> (Elchemy.XList.reverse).())] end end end end end
