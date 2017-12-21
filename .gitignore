@@ -21,3 +21,6 @@ erl_crash.dump
 
 elm-deps
 elm-stuff
+
+.elchemy_elixir_output
+.elchemy_output
