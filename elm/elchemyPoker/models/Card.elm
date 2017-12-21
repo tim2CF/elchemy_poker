@@ -6,6 +6,14 @@ type Value =  V2 | V3 | V4 | V5 | V6 | V7 | V8 | V9 | V10 | Jack | Queen | King 
 
 type alias Card = {suit: Suit, value: Value}
 
+suits : List Suit
+suits =
+  [Hearts, Diamonds, Clubs, Spades]
+
+values : List Value
+values =
+  [V2, V3, V4, V5, V6, V7, V8, V9, V10, Jack, Queen, King, Ace]
+
 {-
 
 suiteOrdering : Ordering Suit

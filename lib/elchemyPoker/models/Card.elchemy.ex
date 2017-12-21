@@ -14,6 +14,16 @@ defmodule ElchemyPoker.Models.Card do
     value: value
   }
 
+  @spec suits() :: list(suit)
+  def suits() do
+    [:hearts, :diamonds, :clubs, :spades]
+  end
+
+  @spec values() :: list(value)
+  def values() do
+    [:v2, :v3, :v4, :v5, :v6, :v7, :v8, :v9, :v10, :jack, :queen, :king, :ace]
+  end
+
 
 
   # suiteOrdering : Ordering Suit
