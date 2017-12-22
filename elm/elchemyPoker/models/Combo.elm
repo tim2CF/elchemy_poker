@@ -34,7 +34,20 @@ calculate cards =
       ++ " cards in hand to calculate wincombo, was given "
       ++ toString cardsAmount
 
+{-
+
+  TODO
+  continue to implement this function
+
+-}
 calculate_ : List (List (Card.Card)) -> Combo
 calculate_ variations =
-  {- TODO !!! -}
+  let
+    foo = variations
+          |> List.map (\cards ->
+              cards
+              |> Utils.groupBy (\card1 card2 ->
+                  card1.value == card2.value))
+          |> Debug.log "hello"
+  in
   RoyalFlash

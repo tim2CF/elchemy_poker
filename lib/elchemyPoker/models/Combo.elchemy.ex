@@ -23,12 +23,29 @@ defmodule ElchemyPoker.Models.Combo do
   def calculate(cards) do
     cards_amount = Elchemy.XList.length(cards)
     if (cards_amount == hand_length()) do case Utils.get_variations().(combo_length()).(cards) do
-      {:ok, _} ->
-        {:ok, :royal_flash}
+      {:ok, variations} ->
+        (calculate_(variations)
+        |> (fn x1 -> {:ok, x1} end).())
       {:error, error} ->
         {:error, error}
     end else (("texas holdem rules require " ++ (to_string().(hand_length()) ++ (" cards in hand to calculate wincombo, was given " ++ to_string().(cards_amount))))
     |> (fn x1 -> {:error, x1} end).()) end
+  end
+
+
+
+  #   TODO
+  #   continue to implement this function
+
+
+  @spec calculate_(list(list(Card.card))) :: combo
+  curryp calculate_/1
+  defp calculate_(variations) do
+    foo = (variations
+    |> (Elchemy.XList.map().(fn cards -> (cards
+    |> (Utils.group_by().(fn card1 -> fn card2 -> (card1.value == card2.value) end end)).()) end)).()
+    |> (Elchemy.XDebug.log().("hello")).())
+    :royal_flash
   end
 
 end
