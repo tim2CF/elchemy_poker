@@ -1,5 +1,5 @@
 
-# Compiled using Elchemy v0.5.3
+# Compiled using Elchemy v0.5.4
 defmodule ElchemyPoker.Models.Combo do
   use Elchemy
 
@@ -39,7 +39,7 @@ defmodule ElchemyPoker.Models.Combo do
 
 
   @spec calculate_(list(list(Card.card))) :: combo
-  curryp calculate_/1
+  curry calculate_/1
   defp calculate_(variations) do
     foo = (variations
     |> (Elchemy.XList.map().(fn cards -> (cards

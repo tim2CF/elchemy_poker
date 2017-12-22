@@ -1,5 +1,5 @@
 
-# Compiled using Elchemy v0.5.3
+# Compiled using Elchemy v0.5.4
 defmodule ElchemyPoker.Models.Card do
   use Elchemy
 
